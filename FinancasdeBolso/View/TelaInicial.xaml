@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:FinancasdeBolso.Libraries.Converters"
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
+             x:Class="FinancasdeBolso.View.TelaInicial"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F0F8FF"
+             Title="TelaInicial">
+
+    <ContentPage.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="black" />
+    </ContentPage.Behaviors>
+
+
+    <ContentPage.Resources>
+        <converters:TransationValueConverter x:Key="TransationValueConverter"/>
+        <converters:TransactionNameConverter x:Key="TransactionNameConverter"/>
+        <converters:TransationValueColor x:Key="TransationValueColor"/>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="*,Auto">
+        <CollectionView x:Name="CollectionTrasacao" Grid.Row="0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Excluir"
+                                            IconImageSource="trash.png"
+                                            BackgroundColor="LightPink"
+                                            Invoked="OnDeleteSwipeItemInvoked"
+                                            CommandParameter="{Binding .}"/>
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <Grid Padding="15" ColumnDefinitions="50,*,Auto">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="TapGestureEdit"/>
+                            </Grid.GestureRecognizers>
+
+                            <Border HeightRequest="50"
+                                     WidthRequest="50"
+                                     Stroke="Transparent"
+                                     StrokeShape="RoundRectangle 23"
+                                     BackgroundColor="#DC143C"
+                                     Padding="0"
+                                     VerticalOptions="End">
+
+                                <Label Text="{Binding Name, Converter={StaticResource TransactionNameConverter}}"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    FontSize="20"
+                                    FontAttributes="Bold"
+                                    TextColor="White"
+                                    Padding="5"
+                                    FontFamily="BreeSerifRegular"/>
+                            </Border>
+
+                            <VerticalStackLayout Grid.Column="1" Spacing="5" Margin="10,0">
+                                <Label Text="{Binding Name}" 
+                                        TextColor="#363636"
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                    FontFamily="BreeSerifRegular"/>
+
+                                <Label Text="{Binding ., Converter={StaticResource TransationValueConverter}}" 
+                                        TextColor="{Binding ., Converter={StaticResource TransationValueColor}}"
+                                        FontSize="20"
+                                    FontFamily="Montserrat"/>
+                            </VerticalStackLayout>
+
+                            <Label Grid.Column="2"
+                                    VerticalOptions="End"
+                                    Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}"
+                                    TextColor="#DC143C"
+                                 FontFamily="Montserrat"/>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!--Popup de valores-->
+        <Border BackgroundColor="#DC143C"
+             Stroke="Transparent"
+             Padding="20"
+                Margin="10"
+             StrokeShape="RoundRectangle 10"
+             AbsoluteLayout.LayoutBounds="0.5,1,100,25"
+         Grid.Row="1">
+
+            <Grid ColumnDefinitions="*,80" RowDefinitions="Auto, Auto, 30, Auto" Padding="10">
+                <Label Text="Saldo"
+                    TextColor="White"
+                    FontSize="18"
+                FontFamily="BreeSerifRegular"/>
+
+                <Label Grid.Row="1"
+                    TextColor="White"
+                    FontSize="27"
+                    x:Name="LblSaldo"
+                 FontFamily="Montserrat"/>
+
+                <Button Text="+"
+                     Clicked="OnclickAdd"
+                     Grid.Column="1"
+                     Grid.RowSpan="2"
+                     FontSize="48"
+                     Padding="0"
+                     CornerRadius="70"
+                     WidthRequest="65"
+                     VerticalOptions="CenterAndExpand"
+                     TextColor="Black"
+                     BackgroundColor="White"
+                 HorizontalOptions="EndAndExpand"/>
+
+                <HorizontalStackLayout Grid.Row="3" Spacing="50">
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Receitas"
+                    TextColor="White"
+                    FontSize="15"
+                FontFamily="BreeSerifRegular"/>
+
+                        <Label
+                    TextColor="White"
+                    FontSize="12"
+                    x:Name="LblReceitas"
+                 FontFamily="Montserrat"/>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Despesas" 
+                    TextColor="White"
+                    FontSize="15"
+                FontFamily="BreeSerifRegular"/>
+
+                        <Label
+                    TextColor="White"
+                    FontSize="12"
+                    x:Name="LblDespesas"
+                 FontFamily="Montserrat"/>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+
+                <Button Text="i"
+                     Grid.Column="1"
+                     Grid.RowSpan="4"
+                     FontSize="20"
+                     Padding="0"
+                     CornerRadius="50"
+                     WidthRequest="28"
+                     HeightRequest="28"
+                     VerticalOptions="End"
+                     HorizontalOptions="End"
+                     TextColor="Black"
+                     BackgroundColor="White"
+                     Clicked="OnClickSobre"/>
+            </Grid>
+
+
+
+        </Border>
+
+    </Grid>
+</ContentPage>

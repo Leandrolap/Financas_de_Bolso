@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FinancasdeBolso.View.CadastroAdd"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F0F8FF"
+             Title="CadastroAdd">
+
+    <Grid>
+        <VerticalStackLayout Padding="15" Spacing="20">
+            <Border Padding="15"
+                    BackgroundColor="#DC143C"
+                    Stroke="Transparent"
+                    StrokeShape="RoundRectangle 10">
+
+                    <Label HorizontalOptions="CenterAndExpand"
+                        Text="NOVA TRANSAÇÃO"
+                        TextColor="White"
+                        VerticalOptions="Center"
+                        FontFamily="BreeSerifRegular"/>
+            </Border>
+
+            <Grid ColumnDefinitions="*,*" Margin="30,0">
+                <RadioButton IsChecked="True" 
+                          Content="Receita"
+                          x:Name="RadioIncome"
+                          TextColor="#363636"
+                          FontFamily="BreeSerifRegular"/>
+
+                <RadioButton Content="Despesa"
+                          Grid.Column="1"
+                          HorizontalOptions="End"
+                          x:Name="RadioExpense"
+                          TextColor="#363636"
+                          FontFamily="BreeSerifRegular"/>
+            </Grid>
+
+            <Frame CornerRadius="8"
+                   BackgroundColor="White"
+                   BorderColor="Transparent"
+                   Padding="1">
+
+                <Entry Placeholder="Nome" 
+                       x:Name="EntryName"
+                       PlaceholderColor="Gray"
+                       TextColor="Black"
+                       VerticalOptions="Center"/>
+            </Frame>
+
+            <Frame CornerRadius="8" 
+                   BackgroundColor="White"
+                   BorderColor="Transparent"
+                   Padding="1">
+
+                <Entry Placeholder="Valor"
+                       x:Name="EntryValue"
+                       PlaceholderColor="Gray"
+                       VerticalOptions="Center"
+                       TextColor="Black"
+                       Keyboard="Numeric"/>
+            </Frame>
+
+            <Frame HorizontalOptions="Center">
+                <StackLayout>
+                    <Label Text="Selecione a data"
+                           HorizontalOptions="Center"
+                           TextColor="Black"
+                           FontSize="12"/>
+
+                    <DatePicker Margin="15,0"
+                             x:Name="DatePickerDate"
+                             TextColor="Black"
+                             HorizontalOptions="Center"
+                             FontSize="17"
+                             Format="dd/MM/yyyy"/>
+                </StackLayout>
+            </Frame>
+
+            <Label TextColor="#FFEA1414" 
+                   x:Name="LabelErro"
+                   IsVisible="False"
+                   Margin="30,30"/>
+        </VerticalStackLayout>
+
+        <Button Text="SALVAR"
+                Margin="20"
+                Padding="20"
+                HorizontalOptions="Center"
+                BackgroundColor="#FFEA1414"
+                Clicked="OnClickedSalvar"
+                VerticalOptions="End"
+                TextColor="White"
+                FontFamily="BreeSerifRegular"/>
+    </Grid>
+</ContentPage>

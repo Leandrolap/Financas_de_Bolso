@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FinancasdeBolso.View.TelaEdicao"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F0F8FF"
+             Title="TelaEdicao">
+
+    <Grid>
+        <VerticalStackLayout>
+            <Border Margin="15"
+                 Padding="15"
+                 BackgroundColor="#DC143C"
+                 Stroke="Transparent"
+                 StrokeShape="RoundRectangle 10">
+
+                <Label x:Name="LblTitulo"
+                        TextColor="White"
+                        VerticalOptions="Center"
+                        FontFamily="BreeSerifRegular"
+                        HorizontalOptions="CenterAndExpand"/>
+            </Border>
+
+            <Grid Margin="30,0" ColumnDefinitions="*,*">
+                <RadioButton x:Name="RadioIncome" 
+                          Content="Receita" 
+                          IsChecked="True"
+                          TextColor="#363636"
+                          FontFamily="BreeSerifRegular"/>
+
+                <RadioButton x:Name="RadioExpense" 
+                          Grid.Column="1" 
+                          Content="Despeza" 
+                          HorizontalOptions="End"
+                          TextColor="#363636"
+                          FontFamily="BreeSerifRegular"/>
+            </Grid>
+
+            <Frame CornerRadius="8"
+                BackgroundColor="White"
+                BorderColor="Transparent"
+                Padding="1"
+                Margin="15,20">
+
+                <Entry x:Name="EntryName"
+                    TextColor="Black"
+                    VerticalOptions="Center"/>
+            </Frame>
+
+            <HorizontalStackLayout Spacing="50">
+                <Frame CornerRadius="8"
+                BackgroundColor="White"
+                BorderColor="Transparent"
+                Padding="1"
+                Margin="15,20"
+             HorizontalOptions="Center"
+             WidthRequest="100">
+
+                    <Entry x:Name="EntryValue"
+                    TextColor="Black"
+                    VerticalOptions="Center"
+                    Keyboard="Numeric"
+                       />
+                </Frame>
+
+                <Frame>
+                    <DatePicker 
+                             x:Name="DatePickerDate"
+                             TextColor="Black"
+                             HorizontalOptions="Center"
+                             FontSize="17"
+                             Format="dd/MM/yyyy"/>
+                </Frame>
+            </HorizontalStackLayout>
+
+            <Editor x:Name="EditDetalhes"
+                 TextColor="Black"
+                 BackgroundColor="White"
+                 FontSize="18"
+                 Margin="15,20,15,0"
+                 HeightRequest="150"
+                 Placeholder="Descrição"/>
+
+            <Label TextColor="Red" 
+                x:Name="LabelErro"
+                IsVisible="False"
+                Margin="30,0"/>
+
+            <VerticalStackLayout  Margin="70">
+                <ImageButton Source="trash.png"
+                             HeightRequest="50"
+                             BackgroundColor="Transparent"
+                             Clicked="OnClickExcluir"/>
+
+                <Label Text="Excluir este item"
+                       TextColor="Black"
+                       HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+
+        
+
+        <Button Margin="20"
+                Padding="20"
+                Text="ALTERAR DADOS"
+                TextColor="White"
+                FontFamily="BreeSerifRegular"
+                BackgroundColor="#FFEA1414"
+                VerticalOptions="End"
+                HorizontalOptions="Center"
+                Clicked="OnClickedSalvar"/>
+    </Grid>
+</ContentPage>

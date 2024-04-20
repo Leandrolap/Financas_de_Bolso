@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FinancasdeBolso.View.Sobre"
+             BackgroundColor="#F0F8FF"
+             Title="Sobre">
+    <Grid>
+        <Border Margin="15"
+                Padding="15"
+                BackgroundColor="#DC143C"
+                Stroke="Transparent"
+                StrokeShape="RoundRectangle 10"
+                VerticalOptions="Start">
+
+        <Label TextColor="White"
+               Text="Finanças de Bolso"
+               FontSize="20"
+               FontFamily="BreeSerifRegular"
+               HorizontalOptions="Center"/>
+        </Border>
+
+        <VerticalStackLayout VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             Margin="15"
+                             Padding="10">
+            
+            <Label Text="Obrigado por usar o aplicativo."
+                   FontSize="20"
+                   FontFamily="Montserrat"
+                   TextColor="Black"/>
+
+            <Label Text="Deixe seu feedback e sua avaliação na loja ou pelo email sua sugestão."
+                   FontSize="15"
+                   TextColor="Black"
+                   FontFamily="BreeSerifRegular"/>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout VerticalOptions="End" 
+                             HorizontalOptions="Center"
+                             Margin="0,0,0,30">
+
+            <Label Text="suporte_desenvolvimento@outlook.com"
+                TextColor="Black"
+                FontSize="12"
+                FontFamily="Montserrat"/>
+
+            <Label Text="Versão: 1.0"
+                TextColor="Black"
+                FontSize="12"
+                FontFamily="Montserrat"
+                HorizontalOptions="Center"
+                Margin="0,15,0,0"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
